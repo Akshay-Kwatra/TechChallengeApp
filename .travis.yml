@@ -1,4 +1,14 @@
+language: go
+
 services: docker
 
-script:
-  - docker --help
+before_script:
+  - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+
+jobs:
+  include:
+    - stage: Build
+      script: sh build.sh
+
+after_script:
+  - ls -lrt dist
