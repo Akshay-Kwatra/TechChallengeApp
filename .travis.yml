@@ -7,8 +7,11 @@ before_script:
 
 jobs:
   include:
-    - stage: Build
-      script: sh build.sh
-
-after_script:
-  - ls -lrt dist
+    - stage: "Test the code build"
+      script:
+      - sh build.sh
+      - ./dist/TechTestApp --help
+    - stage: "Build docker image"
+      script:
+      - docker build . -t techtestapp:latest
+      - docker images
