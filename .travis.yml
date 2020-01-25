@@ -25,5 +25,5 @@ jobs:
       script:
         - ecs-cli configure profile --profile-name techtestapp_profile --access-key "$AWS_ACCESS_KEY" --secret-key "$AWS_SECRET_KEY"
         - ecs-cli configure --cluster techtestapp --region us-west-2
-        - ecs-cli up --capability-iam
+        - ecs-cli up --capability-iam || true
         - ecs-cli compose --file docker-compose.yml up

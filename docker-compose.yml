@@ -14,8 +14,5 @@ services:
     links:
       - db:postgres
     image: abybhamra/techtestapp:latest
-    deploy:
-      mode: replicated
-      replicas: 2
     ports:
       - "80:3000"
