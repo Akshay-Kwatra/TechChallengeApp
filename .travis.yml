@@ -18,4 +18,5 @@ jobs:
     - stage: "Push docker image to repo"
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker push techtestapp:latest
+      - docker tag techtestapp:latest "$DOCKER_USERNAME/techtestapp"
+      - docker push "$DOCKER_USERNAME/techtestapp"
