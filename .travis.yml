@@ -1,10 +1,12 @@
 language: go
 
-services: docker
+services:
+  - docker
 
 before_script:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - sudo curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
+  - sudo chmod +x /usr/local/bin/ecs-cli
 
 jobs:
   include:
