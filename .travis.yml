@@ -4,6 +4,7 @@ services: docker
 
 before_script:
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+  - curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
 
 jobs:
   include:
@@ -18,3 +19,9 @@ jobs:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker tag techtestapp:latest "$DOCKER_USERNAME/techtestapp"
       - docker push "$DOCKER_USERNAME/techtestapp"
+    - stage: "Deploy to AWS ECS"
+      script:
+        - ecs-cli configure profile --profile-name techtestapp_profile --access-key $AWS_ACCESS_KEY --secret-key $AWS_SECRET_KEY
+        - ecs-cli configure --cluster techtestapp --region us-west-2
+        - ecs-cli up --capability-iam
+        - ecs-cli compose --file docker-compose.yml up
