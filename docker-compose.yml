@@ -9,3 +9,10 @@ services:
       POSTGRES_PASSWORD: changeme
     ports:
       - "5432:5432"
+
+  web:
+    links:
+      - db:postgres
+    image: techtestapp:latest
+    ports:
+      - "3000:3000"

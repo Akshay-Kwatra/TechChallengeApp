@@ -47,4 +47,6 @@ COPY --from=build /tmp/swagger/dist ./assets/swagger
 COPY --from=build /swagger.json ./assets/swagger/swagger.json
 COPY --from=build /TechTestApp TechTestApp
 
-ENTRYPOINT [ "./TechTestApp", "serve" ]
+RUN echo "./TechTestApp updatedb && ./TechTestApp serve" > serve.sh
+
+ENTRYPOINT [ "sh", "serve.sh"]
