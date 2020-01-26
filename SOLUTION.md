@@ -46,7 +46,7 @@ The pipeline has the following 3 stages:
 ## Other important Links:
 
 * Docker-hub url: [https://hub.docker.com/repository/docker/abybhamra/techtestapp]
-* Final hosted solution url: [http://ec2-54-190-134-5.us-west-2.compute.amazonaws.com]
-  and swagger url: [http://ec2-54-190-134-5.us-west-2.compute.amazonaws.com/swagger/]
+* Final hosted solution url: [http://ec2-34-220-60-211.us-west-2.compute.amazonaws.com]
+  and swagger url: [http://ec2-34-220-60-211.us-west-2.compute.amazonaws.com/swagger/]
 * Travis Build: [https://travis-ci.org/abybhamra/TechTestApp/]
 
