@@ -9,6 +9,8 @@ services:
       POSTGRES_PASSWORD: changeme
     ports:
       - "5432:5432"
+    networks:
+      - testappnetwork
 
   web:
     links:
@@ -16,3 +18,9 @@ services:
     image: abybhamra/techtestapp:latest
     ports:
       - "80:3000"
+    networks:
+      - testappnetwork
+
+networks:
+  testappnetwork:
+    driver: bridge
