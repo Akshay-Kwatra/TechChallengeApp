@@ -9,7 +9,9 @@ services:
       - database-data:/var/lib/postgresql/data/
     networks:
       - testappnetwork
-
+    environment:
+      POSTGRES_USER: ${VTT_DBUSER}
+      POSTGRES_PASSWORD: ${VTT_DBPASSWORD}
   web:
     links:
       - db:postgres
@@ -18,7 +20,10 @@ services:
       - "80:3000"
     networks:
       - testappnetwork
-
+    environment:
+      VTT_DBNAME: ${VTT_DBNAME}
+      VTT_DBUSER: ${VTT_DBUSER}
+      VTT_DBPASSWORD: ${VTT_DBPASSWORD}
 volumes:
   database-data:
 
